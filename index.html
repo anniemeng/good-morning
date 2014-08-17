@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Good Morning</title>
+
+  <!--CSS-->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+  <header id="top">
+    <!--TIME/DATE-->
+    <div id="overlay">
+      <div id="info">
+        <h1 id="date"></h1>
+        <h2 id="time"></h2>
+      </div>
+
+      <!--FORECAST-->
+      <div class="weather">
+        <div class="status"></div>
+        <div class="location"></div>
+        <div class="condition"></div>
+        <div class="temp"></div>
+      </div>
+    </div>
+  </header>
+
+  <!--SEARCH NEARBY-->
+  <div id="locate">
+    <p>I want:</p><br>
+    <input id="locationIn"></input>
+    <div id="disp"></div>
+    <div id="resultsLoc"></div>
+  </div>
+
+  <!--NEWS DISPLAY-->
+  <div id="news">
+  </div>
+
+
+  <!--JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+  <script src="js/date.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/news.js"></script>
+  <script src="js/nearby.js"></script>
+</body>
