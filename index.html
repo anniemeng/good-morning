@@ -33,10 +33,11 @@
 
   <!--SEARCH NEARBY-->
   <div id="locate">
-    <p>I want:</p><br>
-    <input id="locationIn"></input>
+    <p>Where's my coffee?</p>
+    <div id="map-canvas"></div>
     <div id="disp"></div>
     <div id="resultsLoc"></div>
+    <img src="img/powered-by-google-on-white.png"></img>
   </div>
 
   <!--NEWS DISPLAY-->
@@ -47,8 +48,11 @@
   <!--JS-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.0.0/moment.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
   <script src="js/date.js"></script>
   <script src="js/weather.js"></script>
-  <script src="js/news.js"></script>
   <script src="js/nearby.js"></script>
+  <script src="js/location.js"></script>
+  <!--<script src="js/otherweather.js"></script>-->
+  <script src="js/news.js"></script>
 </body>

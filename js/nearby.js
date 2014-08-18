@@ -1,25 +1,49 @@
-function findNearby() {
-  var locObj = findLocation();
-  console.log(locObj);
-  var lat = locObj[0];
-  var long = locObj[1];
-  var loc = lat + "," + long;
+var map;
+var infowindow;
 
-  var htmlNearby = "";
-  /*var nearbyURL= "https://maps.googleapis.com/maps/api/place/textsearch/json?location="+loc+"
-  &radius=20000&query=coffee&key=AIzaSyBaAXNCfhGjkv1QSJIl9veY2-l8WN2uPaA";
+function findNearby(lat, long) {
+  var loc = new google.maps.LatLng(lat,long);
 
-  $.ajax({
-    url:nearbyURL,
-    dataType:json,
-    success: function(x) {
-      $.each(x.results) {
-        htmlNearby += '<p class="name">' + this.name + '<p>' + '<p class="address">'
-                        + formatted_address + '<p>';
-      }
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
+      center: loc,
+      zoom: 15
+    });
 
-      $("#resultsLoc").html(htmlNearby);
-    }
-  });*/
+  var request = {
+    location: loc,
+    radius: 20000,
+    query: 'coffee'
+  };
+
+  infowindow = new google.maps.InfoWindow();
+  var service = new google.maps.places.PlacesService(map);
+  service.textSearch(request, callback);
 }
-findNearby();
+
+function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      var htmlNearby ="";
+      for (var i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+        htmlNearby += '<p class="name">' + results[i].name + '<p>' + '<p class="address">'
+                        + results[i].formatted_address + '<p>';
+
+    }
+    $("#resultsLoc").html(htmlNearby);
+  }
+}
+
+
+function createMarker(place) {
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
+
+
